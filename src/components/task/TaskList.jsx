@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa6";
 
-export default function TaskList({ tasks, onEditTask }) {
+export default function TaskList({ tasks, onEditTask, onDeleteTask }) {
     return (
         <>
             <div className="overflow-auto">
@@ -35,7 +35,7 @@ export default function TaskList({ tasks, onEditTask }) {
                                 <td className="text-center">{task.priority}</td>
                                 <td>
                                     <div className="flex items-center justify-center space-x-3">
-                                        <button className="text-red-500">Delete</button>
+                                        <button className="text-red-500" onClick={ () => onDeleteTask(task.id) }>Delete</button>
                                         <button onClick={() => onEditTask(task)} className="text-blue-500">Edit</button>
                                     </div>
                                 </td>

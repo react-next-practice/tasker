@@ -49,6 +49,18 @@ export default function TaskBoard() {
         setShowTaskModal(false);
         setTaskToEdit(null);
     }
+
+    // handle Delete Task
+    function handleDeleteTask(taskId) {
+        const updatedTasks = tasks.filter((task) => task.id !== taskId);
+        setTasks(updatedTasks);
+    }
+
+    // handle Delete All Task
+    function handeAllDelete() {
+        tasks.length = 0;
+        setTasks( [...tasks] );
+    }
     
     return (
         <>
@@ -61,8 +73,8 @@ export default function TaskBoard() {
                     </div>
 
                     <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-                        <TaskActions onAddTask={() => setShowTaskModal(true)} />
-                        <TaskList tasks={tasks} onEditTask={handleEditTask} />
+                        <TaskActions onAddTask={() => setShowTaskModal(true)} onDeleteAllTask={handeAllDelete} />
+                        <TaskList tasks={tasks} onEditTask={handleEditTask} onDeleteTask={handleDeleteTask} />
                     </div>
                 </div>
             </section>
